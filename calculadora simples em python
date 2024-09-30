@@ -1,0 +1,32 @@
+def calcular(num1, num2, operacao):
+    if operacao == 'soma':
+        return num1 + num2
+    elif operacao == 'subtração':
+        return num1 - num2
+    elif operacao == 'divisão':
+        if num2 == 0:
+            return "Erro: Divisão por zero não é permitida."
+        return num1 / num2
+    else:
+        return "Operação inválida."
+
+def main():
+    while True:
+        try:
+            num1 = float(input("Digite o primeiro número: "))
+            operacao = input("Selecione a operação (soma, subtração, divisão): ").strip().lower()
+            num2 = float(input("Digite o segundo número: "))
+
+            resultado = calcular(num1, num2, operacao)
+            print(f"O resultado é: {resultado}")
+
+        except ValueError:
+            print("Entrada inválida. Por favor, insira números válidos.")
+
+        sair = input("Deseja calcular novamente? (s/n): ").strip().lower()
+        if sair != 's':
+            print("Saindo da calculadora.")
+            break
+
+if __name__ == "__main__":
+    main()
