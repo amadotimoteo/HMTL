@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Idade</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Idade</h1>
+    <form onsubmit="calcularIdade(event)">
+        <label for="nome"></label><input type="text" id="nome" placeholder="Nome" required>
+        <label for="dia"></label><input type="number" id="dia" placeholder="Dia" required min="1" max="31">
+        <label for="mes"></label><input type="number" id="mes" placeholder="Mês" required min="1" max="12">
+        <label for="ano"></label><input type="number" id="ano" placeholder="Ano" required>
+        <button type="submit">Calcular Idade</button>
+    </form>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularIdade(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const diaNasc = parseInt(document.getElementById('dia').value);
+            const mesNasc = parseInt(document.getElementById('mes').value);
+            const anoNasc = parseInt(document.getElementById('ano').value);
+            const hoje = new Date();
+            let anos = hoje.getFullYear() - anoNasc;
+            let meses = hoje.getMonth() + 1 - mesNasc;
+            let dias = hoje.getDate() - diaNasc;
+
+            if (dias < 0) {
+                meses--;
+                dias += new Date(hoje.getFullYear(), hoje.getMonth(), 0).getDate();
+            }
+            if (meses < 0) {
+                anos--;
+                meses += 12;
+            }
+            document.getElementById('resultado').innerText = `${nome}, você tem ${anos} anos, ${meses} meses e ${dias} dias.`;
+        }
+    </script>
+</body>
+</html>
+
