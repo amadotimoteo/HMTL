@@ -1,0 +1,23 @@
+def calcular_idade(ano_nascimento, ano_atual):
+    return ano_atual - ano_nascimento
+
+def main():
+    ano_atual = 2023  # Você pode atualizar isso para o ano atual
+
+    while True:
+        try:
+            ano_nascimento = int(input("Digite seu ano de nascimento: "))
+            
+            idade = calcular_idade(ano_nascimento, ano_atual)
+            print(f"Sua idade é: {idade} anos.")
+
+        except ValueError:
+            print("Entrada inválida. Por favor, insira um ano válido.")
+
+        sair = input("Deseja calcular novamente? (s/n): ").strip().lower()
+        if sair != 's':
+            print("Saindo da calculadora de idade.")
+            break
+
+if __name__ == "__main__":
+    main()
