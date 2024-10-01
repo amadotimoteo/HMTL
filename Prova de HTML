@@ -1,0 +1,90 @@
+<html>
+<body>
+<script type="text/javascript">
+    const usernameValido = "Gabriel";
+    const senhaValida = "1234";
+
+    function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (username === usernameValido && password === senhaValida) {
+            document.getElementById("login").classList.add("hidden");
+            document.getElementById("menu").classList.remove("hidden");
+        } else {
+            alert("Acesso negado");
+        }
+    }
+
+    function logout() {
+        document.getElementById("menu").classList.add("hidden");
+        document.getElementById("login").classList.remove("hidden");
+    }
+
+    function salarioLiquido() {
+        const nome = prompt("Insira seu nome:");
+        const salarioBruto = parseFloat(prompt("Insira seu salário bruto:"));
+        const desconto = parseFloat(prompt("Insira o valor do desconto:"));
+        const filhos = parseInt(prompt("Quantos filhos você tem?"));
+
+        const salarioLiquido = salarioBruto - desconto + (filhos * 100);
+        alert(`Seu salário é: R$ ${salarioLiquido.toFixed(2)}`);
+        voltarMenu();
+    }
+
+    function descontoINSS() {
+        const nome = prompt("Insira seu nome:");
+        const salario = parseFloat(prompt("Insira seu salário:"));
+        const percentual = parseFloat(prompt("Insira o desconto (em %):"));
+
+        const desconto = salario * (percentual / 0.100);
+        alert(`O valor do desconto é: R$ ${desconto.toFixed(2)}`);
+        voltarMenu();
+    }
+
+    function impostoRenda() {
+        const nome = prompt("Insira seu nome:");
+        const salario = parseFloat(prompt("Insira seu salário:"));
+
+        let percentual = 0;
+        if (salario < 2000) {
+            percentual = 0.30;
+        } else {
+            percentual = 0.40;
+        }
+
+        const desconto = salario * percentual;
+        alert(`O valor do seu imposto de renda é: R$ ${desconto.toFixed(2)}`);
+        voltarMenu();
+    }
+
+    function voltarMenu() {
+        if (confirm("Deseja voltar ao menu?")) {
+            document.getElementById("menu").classList.remove("hidden");
+        }
+    }
+</script>
+
+<div id="login" class="login">
+    <h2>Tela de Login</h2>
+    <input type="text" id="username" placeholder="Nome de usuário" required>
+    <input type="password" id="password" placeholder="Senha" required>
+    <button onclick="login()">Entrar</button>
+    <button onclick="alert('Acesso negado')">Sair</button>
+</div>
+
+<div id="menu" class="hidden">
+    <h2>Menu</h2>
+    <button onclick="salarioLiquido()">Salário Líquido</button>
+    <button onclick="descontoINSS()">Desconto INSS</button>
+    <button onclick="impostoRenda()">Desconto Imposto de Renda</button>
+    <button onclick="logout()">Sair</button>
+</div>
+
+<style>
+    body { font-family: Arial, sans-serif; }
+    .hidden { display: none; }
+</style>
+
+</body>
+</html>
