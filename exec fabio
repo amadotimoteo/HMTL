@@ -1,0 +1,16 @@
+import matplotlib.pyplot as plt
+
+# Dados de exemplo
+altura = [1.50, 1.60, 1.70, 1.80, 1.90]  # Altura
+peso = [55, 68, 70, 75, 110]          # Peso
+
+# grafico altura x peso
+plt.stackplot(altura, peso)
+
+# Adicionando títulos e rótulos
+plt.title('Grafico de altura x peso')
+plt.xlabel('Eixo altura')
+plt.ylabel('Eixo peso')
+
+# Exibindo o gráfico
+plt.show()
